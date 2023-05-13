@@ -1,10 +1,30 @@
 from langchain import OpenAI, SQLDatabase, SQLDatabaseChain
-from dotenv import load_dotenv
+import streamlit as st
+import pandas as pd
 
-# Load enviroment variables
-load_dotenv()
+st.title('Database Query AI Assistant')
+api_key = st.text_input('Digite sua chave da OpenAI API:', '', type='password')
 
-db = SQLDatabase.from_uri("sqlite:///Chinook.sqlite")
-llm = OpenAI(temperature=0)
-db_chain = SQLDatabaseChain(llm=llm, database=db, verbose=True, return_intermediate_steps=True)
-result = db_chain("List the total sales per country. Which country's customers spent the most?")
+#uploaded_file
+uploaded_file = st.file_uploader("Carregue o seu banco de dados:", type='sqlite')
+
+#"List the total sales per country. Which country's customers spent the most?"
+query = st.text_input('Digite sua pergunta:', '')
+
+if uploaded_file is not None:
+    # Lê o conteúdo do arquivo carregado em memória
+    content = uploaded_file.read()
+
+    # Grava o arquivo carregado no disco em um local temporário
+    with open('temp.sqlite', 'wb') as f:
+        f.write(content)
+
+    db = SQLDatabase.from_uri("sqlite:///temp.sqlite")    
+    llm = OpenAI(temperature=0)
+    db_chain = SQLDatabaseChain(llm=llm, database=db, verbose=True, return_intermediate_steps=True)
+    result = db_chain(query)
+
+    st.write("Resposta:")
+    st.write(result['result'])
+    st.write("SQLQuery:")
+    st.write(result['intermediate_steps'][0])
