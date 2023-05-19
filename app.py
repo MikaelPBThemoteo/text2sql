@@ -4,11 +4,12 @@ import pandas as pd
 import os   
 
 st.title('Ask to Your Database')
-api_key = st.text_input('Digite sua chave da OpenAI API:', '', type='password')
-os.environ["OPENAI_API_KEY"] = api_key
 
 #uploaded_file
 uploaded_file = st.file_uploader("Carregue o seu banco de dados:", type='sqlite')
+
+api_key = st.text_input('Digite sua chave da OpenAI API:', '', type='password')
+os.environ["OPENAI_API_KEY"] = api_key
 
 #"List the total sales per country. Which country's customers spent the most?"
 query = st.text_input('Digite sua pergunta:', '')
