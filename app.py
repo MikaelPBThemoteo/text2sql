@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd
 import os   
 
-st.title('Database Query AI Assistant')
+st.title('Ask to Your Database')
 api_key = st.text_input('Digite sua chave da OpenAI API:', '', type='password')
 os.environ["OPENAI_API_KEY"] = api_key
 
