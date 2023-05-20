@@ -1,3 +1,4 @@
 /env
 .env
 temp.sqlite
+temp.csv

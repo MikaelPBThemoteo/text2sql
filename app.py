@@ -4,13 +4,6 @@ import pandas as pd
 import os   
 from langchain.agents import create_csv_agent
 
-def sqlite():
-    pass
-
-def csv():
-    pass
-
-
 with st.sidebar:
     st.header('Sobre')
     st.markdown('Obrigado pelo seu interesse na nossa aplicação. Por favor, \
@@ -29,6 +22,7 @@ if option == 'SQLITE':
     uploaded_file = st.file_uploader("Carregue a sua base de dados:", 
                                     type='sqlite')
 
+    # Authentication
     api_key = st.text_input('Digite sua chave da OpenAI API:', '', type='password')
     os.environ["OPENAI_API_KEY"] = api_key
 
@@ -47,7 +41,8 @@ if option == 'SQLITE':
 
             db = SQLDatabase.from_uri("sqlite:///temp.sqlite")    
             llm = OpenAI(temperature=0)
-            db_chain = SQLDatabaseChain(llm=llm, database=db, verbose=True, return_intermediate_steps=True)
+            db_chain = SQLDatabaseChain(llm=llm, database=db, verbose=True, 
+                                        return_intermediate_steps=True)
             result = db_chain(query)
 
             st.write("Resposta:")
@@ -55,4 +50,30 @@ if option == 'SQLITE':
             st.write("SQLQuery:")
             st.write(result['intermediate_steps'][0])
 else:
-    #agent = create_csv_agent(OpenAI(temperature=0), 'titanic.csv', verbose=True)
+    #uploaded_file
+    uploaded_file = st.file_uploader("Carregue a sua base de dados:", 
+                                    type='csv')
+
+    # Authentication
+    api_key = st.text_input('Digite sua chave da OpenAI API:', '', type='password')
+    os.environ["OPENAI_API_KEY"] = api_key
+
+    # 
+    query = st.text_input('Digite sua pergunta:', '')
+
+    if st.button('Submeter'):
+        run = (uploaded_file is not None) and (api_key is not None) and (query is not None)
+        if run:
+            # Lê o conteúdo do arquivo carregado em memória
+            content = uploaded_file.read()
+            
+            # Grava o arquivo carregado no disco em um local temporário
+            with open('temp.csv', 'wb') as f:
+                f.write(content)
+            
+            agent = create_csv_agent(OpenAI(temperature=0), 
+                                     'temp.csv', verbose=True)
+            
+            result = agent.run(query)
+            st.write("Resposta:")
+            st.write(result)
