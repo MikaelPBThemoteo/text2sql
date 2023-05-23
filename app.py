@@ -16,22 +16,22 @@ st.title('Pergunte A Sua Base de Dados')
 
 option = st.selectbox('Qual o tipo da sua base de dados?',
                       ('SQLITE', 'CSV'))
+#uploaded_file
+uploaded_file = st.file_uploader("Carregue a sua base de dados:", 
+                                type=option.lower())
 
-if option == 'SQLITE':
-    #uploaded_file
-    uploaded_file = st.file_uploader("Carregue a sua base de dados:", 
-                                    type='sqlite')
+# Authentication
+api_key = st.text_input('Digite sua chave da OpenAI API:', '', type='password')
+os.environ["OPENAI_API_KEY"] = api_key
 
-    # Authentication
-    api_key = st.text_input('Digite sua chave da OpenAI API:', '', type='password')
-    os.environ["OPENAI_API_KEY"] = api_key
+#"List the total sales per country. Which country's customers spent the most?"
+query = st.text_input('Digite sua pergunta:', '')
 
-    #"List the total sales per country. Which country's customers spent the most?"
-    query = st.text_input('Digite sua pergunta:', '')
-
-    if st.button('Submeter'):
-        run = (uploaded_file is not None) and (api_key is not None) and (query is not None)
-        if run:
+if st.button('Submeter'):
+    run = ((uploaded_file is not None) and (api_key is not None) and 
+           (query is not None))
+    if run:
+        if option == 'SQLITE':
             # Lê o conteúdo do arquivo carregado em memória
             content = uploaded_file.read()
 
@@ -49,21 +49,7 @@ if option == 'SQLITE':
             st.write(result['result'])
             st.write("SQLQuery:")
             st.write(result['intermediate_steps'][0])
-else:
-    #uploaded_file
-    uploaded_file = st.file_uploader("Carregue a sua base de dados:", 
-                                    type='csv')
-
-    # Authentication
-    api_key = st.text_input('Digite sua chave da OpenAI API:', '', type='password')
-    os.environ["OPENAI_API_KEY"] = api_key
-
-    # 
-    query = st.text_input('Digite sua pergunta:', '')
-
-    if st.button('Submeter'):
-        run = (uploaded_file is not None) and (api_key is not None) and (query is not None)
-        if run:
+        else:
             # Lê o conteúdo do arquivo carregado em memória
             content = uploaded_file.read()
             
@@ -72,7 +58,7 @@ else:
                 f.write(content)
             
             agent = create_csv_agent(OpenAI(temperature=0), 
-                                     'temp.csv', verbose=True)
+                                    'temp.csv', verbose=True)
             
             result = agent.run(query)
             st.write("Resposta:")
