@@ -9,7 +9,7 @@ with st.sidebar:
     st.markdown('Obrigado pelo seu interesse na nossa aplicação. Por favor, \
                 esteja ciente de que este é apenas um sistema de Prova de \
                 Conceito e pode conter bugs ou recursos inacabados.')
-    st.markdown('Feito por [Hagi Jakobson]() e [Mikael Timoteo]().')
+    st.markdown('Feito por [Hagi Jakobson](https://www.linkedin.com/in/hagijakobson/) e [Mikael Timoteo]().')
     st.markdown('O código fonte pode ser encontrado [aqui]().')
     
 st.title('Pergunte A Sua Base de Dados')
