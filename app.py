@@ -1,6 +1,5 @@
 from langchain import OpenAI, SQLDatabase, SQLDatabaseChain
 import streamlit as st
-import pandas as pd
 import os   
 from langchain.agents import create_csv_agent
 
@@ -12,7 +11,7 @@ with st.sidebar:
     st.markdown('Feito por [Hagi Jakobson](https://www.linkedin.com/in/hagijakobson/) e [Mikael Timoteo](https://www.linkedin.com/in/mikael-themoteo-00869574/).')
     st.markdown('O código fonte pode ser encontrado [aqui](https://github.com/MikaelPBThemoteo/text2sql).')
     
-st.title('Pergunte A Sua Base de Dados')
+st.title('Pergunte Aos Dados')
 
 option = st.selectbox('Qual o tipo da sua base de dados?',
                       ('SQLITE', 'CSV'))
@@ -24,7 +23,7 @@ uploaded_file = st.file_uploader("Carregue a sua base de dados:",
 api_key = st.text_input('Digite sua chave da OpenAI API:', '', type='password')
 os.environ["OPENAI_API_KEY"] = api_key
 
-#"List the total sales per country. Which country's customers spent the most?"
+#
 query = st.text_input('Digite sua pergunta:', '')
 
 if st.button('Submeter'):
