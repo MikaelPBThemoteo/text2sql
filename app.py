@@ -10,7 +10,7 @@ with st.sidebar:
                 esteja ciente de que este é apenas um sistema de Prova de \
                 Conceito e pode conter bugs ou recursos inacabados.')
     st.markdown('Feito por [Hagi Jakobson](https://www.linkedin.com/in/hagijakobson/) e [Mikael Timoteo](https://www.linkedin.com/in/mikael-themoteo-00869574/).')
-    st.markdown('O código fonte pode ser encontrado [aqui]().')
+    st.markdown('O código fonte pode ser encontrado [aqui](https://github.com/MikaelPBThemoteo/text2sql).')
     
 st.title('Pergunte A Sua Base de Dados')
 
