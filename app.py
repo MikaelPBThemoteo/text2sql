@@ -40,14 +40,14 @@ if st.button('Submeter'):
 
             db = SQLDatabase.from_uri("sqlite:///temp.sqlite")    
             llm = OpenAI(temperature=0)
-            db_chain = SQLDatabaseChain(llm=llm, database=db, verbose=True, 
-                                        return_intermediate_steps=True)
+            db_chain = SQLDatabaseChain.from_llm(llm, db, verbose=True, 
+                                                 return_intermediate_steps=True)
             result = db_chain(query)
 
             st.write("Resposta:")
             st.write(result['result'])
             st.write("SQLQuery:")
-            st.write(result['intermediate_steps'][0])
+            st.write(result['intermediate_steps'][1])
         else:
             # Lê o conteúdo do arquivo carregado em memória
             content = uploaded_file.read()
