@@ -22,4 +22,4 @@ streamlit run app.py
 Saída esperada:
 <center><img width="800" src="images/output.png"></center>
 
-## A versão online do app pode ser encontrada [aqui](). ☁️
+## A versão online do app pode ser encontrada [aqui](https://mikaelpbthemoteo-text2sql-app-8rhnk7.streamlit.app/). ☁️
