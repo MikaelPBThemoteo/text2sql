@@ -25,4 +25,4 @@ Saída esperada:
 ## A versão online do app pode ser encontrada [aqui](https://mikaelpbthemoteo-text2sql-app-8rhnk7.streamlit.app/). ☁️
 
 ## Um vídeo de apresentação e demonstração pode ser acessado [aqui](https://youtu.be/2N2VrJICAmg).
-![Watch the video](https://youtu.be/2N2VrJICAmg)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2N2VrJICAmg?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
