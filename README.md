@@ -23,3 +23,6 @@ Saída esperada:
 <center><img width="800" src="images/output.png"></center>
 
 ## A versão online do app pode ser encontrada [aqui](https://mikaelpbthemoteo-text2sql-app-8rhnk7.streamlit.app/). ☁️
+
+✅## Um vídeo de apresentação e demonstração pode ser acessado [aqui]([https://mikaelpbthemoteo-text2sql-app-8rhnk7.streamlit.app/](https://youtu.be/2N2VrJICAmg).🎞️
+[![Watch the video](https://mikaelpbthemoteo-text2sql-app-8rhnk7.streamlit.app/](https://youtu.be/2N2VrJICAmg)
