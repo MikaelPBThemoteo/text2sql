@@ -26,4 +26,5 @@ Saída esperada:
 
 ## Um vídeo de apresentação e demonstração pode ser acessado [aqui](https://youtu.be/2N2VrJICAmg).
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/2N2VrJICAmg?controls=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+[![Consulta Base de Dados Com Linguagem Natural](https://img.youtube.com/vi/2N2VrJICAmg/0.jpg)](https://www.youtube.com/watch?v=2N2VrJICAmg)
+
