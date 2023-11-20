@@ -1,7 +1,7 @@
-from langchain import OpenAI, SQLDatabase, SQLDatabaseChain
-import streamlit as st
-import os   
-from langchain.agents import create_csv_agent
+#from langchain import OpenAI, SQLDatabase, SQLDatabaseChain
+#import streamlit as st
+#import os   
+#from langchain.agents import create_csv_agent
 
 with st.sidebar:
     st.header('Sobre')
